@@ -8,5 +8,7 @@ namespace MyRestaurant.API.Context
      
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Message> Messages { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
     }
 }
