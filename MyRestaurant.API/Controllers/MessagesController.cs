@@ -30,6 +30,20 @@ namespace MyRestaurant.API.Controllers
             return await _context.Messages.ToListAsync();
         }
 
+        [HttpGet("unread")]
+        public async Task<IActionResult> GetUnreadMessages()
+        {
+            var unreadMessages = await _context.Messages.Where(x => !x.IsRead).ToListAsync();
+            return Ok(unreadMessages);
+        }
+
+        [HttpGet("read")]
+        public async Task<IActionResult> GetReadMessages()
+        {
+            var readMessages = await _context.Messages.Where(x => x.IsRead).ToListAsync();
+            return Ok(readMessages);
+        }
+
         // GET: api/Messages/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Message>> GetMessage(int id)

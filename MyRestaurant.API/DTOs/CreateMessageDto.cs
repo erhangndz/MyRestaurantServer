@@ -10,5 +10,7 @@ namespace MyRestaurant.API.DTOs
         public string Body { get; set; }
         [JsonIgnore]
         public bool IsRead { get; set; } = false;
+        [JsonIgnore]
+        public DateTime SendDate { get; set; } = DateTime.Now;
     }
 }
