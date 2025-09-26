@@ -44,6 +44,15 @@ namespace MyRestaurant.API.Controllers
             return Ok(readMessages);
         }
 
+        [HttpPatch("markAsRead")]
+        public async Task<IActionResult> MarkAsRead(Message message)
+        {
+            message.IsRead = true;
+            _context.Messages.Update(message);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
         // GET: api/Messages/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Message>> GetMessage(int id)
